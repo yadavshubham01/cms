@@ -35,7 +35,6 @@ export const UpdateVideoClient = ({
   const [pdfLink, setPdfLink] = useState('');
   const [vttLink, setVttLink] = useState('');
 
-  const [adminPassword, setAdminPassword] = useState('');
   return (
     <div className='max-w-7xl mx-auto px-4'>
 
@@ -109,17 +108,10 @@ export const UpdateVideoClient = ({
                   }}
                   placeholder={'m3u8 360p'}
                 />
-                <Label className="mt-4">Admin Password</Label>
-                <Input
-                  type="text"
-                  placeholder="Admin password"
-                  onChange={(e) => setAdminPassword(e.target.value)}
-                />
                 <Button
-                  className="my-4 w-full rounded p-2 font-bold text-white lg:w-[20%]"
+                  className="my-4 rounded  p-2 font-bold text-white w-full lg:w-[20%]"
                   onClick={async () => {
                     await axios.post('/api/admin/updatecontent', {
-                      adminPassword,
                       contentId: content.id,
                       updates: {
                         video_360p: link360,
@@ -160,16 +152,10 @@ export const UpdateVideoClient = ({
                   }}
                   placeholder={'pdf link'}
                 />
-                <Input
-                  type="text"
-                  placeholder="Admin password"
-                  onChange={(e) => setAdminPassword(e.target.value)}
-                />
                 <Button
                   className="my-4 rounded p-2 font-bold text-white w-full lg:w-[20%]"
                   onClick={async () => {
                     await axios.post('/api/admin/contentmetadata', {
-                      adminPassword,
                       contentId: content.id,
                       updates: {
                         slides: pdfLink,
@@ -204,17 +190,10 @@ export const UpdateVideoClient = ({
                   }}
                   placeholder={'vtt link'}
                 />
-                <Input
-                  type="text"
-                  placeholder="Admin password"
-                  onChange={(e) => setAdminPassword(e.target.value)}
-                  className="my-3"
-                />
                 <Button
                   className="my-4 rounded  p-2 font-bold text-white w-full lg:w-[20%]"
                   onClick={async () => {
                     await axios.post('/api/admin/contentmetadata', {
-                      adminPassword,
                       contentId: content.id,
                       updates: {
                         subtitles: vttLink,

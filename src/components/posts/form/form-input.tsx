@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import { forwardRef } from 'react';
 import { useFormStatus } from 'react-dom';
 
@@ -20,7 +19,6 @@ interface FormInputProps {
   className?: string;
   defaultValue?: string;
   onBlur?: () => void;
-  onKeyUp?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
 export const FormPostInput = forwardRef<HTMLInputElement, FormInputProps>(
@@ -35,7 +33,6 @@ export const FormPostInput = forwardRef<HTMLInputElement, FormInputProps>(
       errors,
       className,
       defaultValue = '',
-      onKeyUp,
       onBlur,
     },
     ref,
@@ -60,7 +57,6 @@ export const FormPostInput = forwardRef<HTMLInputElement, FormInputProps>(
             required={required}
             name={id}
             id={id}
-            onKeyUp={onKeyUp}
             placeholder={placeholder}
             type={type}
             disabled={pending || disabled}
